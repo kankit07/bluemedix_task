@@ -2,6 +2,7 @@ const { Model } = require("mongoose");
 const User = require("../models/user");
 const { validationResult } = require("express-validator");
 
+// get all users
 const getUsers = async (req, res, next) => {
   try {
     const users = await User.find();
@@ -16,6 +17,7 @@ const getUsers = async (req, res, next) => {
   }
 };
 
+// get single user by id
 const getUser = async (req, res, next) => {
   try {
     const user = await User.findById(req.params.id);
@@ -35,6 +37,8 @@ const getUser = async (req, res, next) => {
     next(error);
   }
 };
+
+// create new user
 const createUser = async (req, res, next) => {
   try {
     // Validate request body
@@ -76,6 +80,7 @@ const createUser = async (req, res, next) => {
   }
 };
 
+// update the existing user
 const updateUser = async (req, res, next) => {
   try {
     // Find user
@@ -113,6 +118,7 @@ const updateUser = async (req, res, next) => {
   }
 };
 
+// delete the existing user
 const deleteUser = async (req, res, next) => {
   try {
     const user = await User.findById(req.params.id);
